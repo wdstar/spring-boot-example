@@ -33,3 +33,9 @@ See [Spring Initializr Java Support](https://marketplace.visualstudio.com/items?
     $ java -jar ./build/libs/spring-boot-example-*.jar
     ```
 1. Access http://localhost:8080/greet
+
+## References
+
+- [Guides](https://spring.io/guides)
+    - [Building an Application with Spring Boot](https://spring.io/guides/gs/spring-boot/)
+    - [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)

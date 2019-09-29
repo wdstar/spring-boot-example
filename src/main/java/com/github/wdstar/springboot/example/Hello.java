@@ -8,6 +8,8 @@ public class Hello {
 
 	@RequestMapping("/greet")
 	public String greet() {
+		System.out.println("Hello.greet() called.");
+
 		return "Hello World!";
 	}
 
