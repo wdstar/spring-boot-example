@@ -11,7 +11,7 @@ plugins {
 	id 'org.springframework.boot' version '2.1.8.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
-    id 'io.freefair.lombok' version '4.0.1'
+    id 'io.freefair.lombok' version '4.1.1'
 }
 
 apply plugin: 'io.spring.javaformat'
@@ -32,4 +32,9 @@ dependencies {
     // for loading a `logback.groovy` file.
     runtime group: 'org.codehaus.groovy', name: 'groovy', version: '2.5.7'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+// See: https://docs.freefair.io/gradle-plugins/4.1.1/reference/#_io_freefair_lombok
+lombok {
+    config['lombok.log.fieldName'] = 'logger'
 }
