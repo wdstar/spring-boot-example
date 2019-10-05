@@ -12,6 +12,8 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
     id 'io.freefair.lombok' version '4.1.1'
+    // https://github.com/kelloggm/checkerframework-gradle-plugin
+    id 'org.checkerframework' version '0.4.3'
 }
 
 apply plugin: 'io.spring.javaformat'
@@ -32,6 +34,13 @@ dependencies {
     // for loading a `logback.groovy` file.
     runtime group: 'org.codehaus.groovy', name: 'groovy', version: '2.5.7'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+checkerFramework {
+    excludeTests = true
+    checkers = [
+        'org.checkerframework.checker.nullness.NullnessChecker',
+    ]
 }
 
 // See: https://docs.freefair.io/gradle-plugins/4.1.1/reference/#_io_freefair_lombok
