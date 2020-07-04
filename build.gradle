@@ -28,8 +28,10 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    compile 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-devtools'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
     // https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all
     // for loading a `logback.groovy` file.
     runtime group: 'org.codehaus.groovy', name: 'groovy', version: '2.5.7'
@@ -46,4 +48,8 @@ checkerFramework {
 // See: https://docs.freefair.io/gradle-plugins/4.1.1/reference/#_io_freefair_lombok
 lombok {
     config['lombok.log.fieldName'] = 'logger'
+}
+
+springBoot {
+    buildInfo()
 }
