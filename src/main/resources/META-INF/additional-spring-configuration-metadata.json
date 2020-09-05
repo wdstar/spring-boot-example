@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "example.password",
+      "type": "java.lang.String",
+      "description": "Password"
+    },
+    {
+      "name": "example.token",
+      "type": "java.lang.String",
+      "description": "Token"
+    }
+  ]
+}
