@@ -1,12 +1,12 @@
 {
   "properties": [
     {
-      "name": "example.password",
+      "name": "example.secrets.password",
       "type": "java.lang.String",
       "description": "Password"
     },
     {
-      "name": "example.token",
+      "name": "example.secrets.token",
       "type": "java.lang.String",
       "description": "Token"
     }

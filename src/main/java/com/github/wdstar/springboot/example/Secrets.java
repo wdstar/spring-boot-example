@@ -14,7 +14,9 @@ public class Secrets {
 	@Getter
 	private final String token;
 
-	public Secrets(@Value("${example.password}") final String password, @Value("${example.token}") final String token) {
+	// better constructor injection.
+	public Secrets(@Value("${example.secrets.password}") final String password,
+			@Value("${example.secrets.token}") final String token) {
 		this.password = password;
 		this.token = token;
 	}
