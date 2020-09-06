@@ -1,20 +1,32 @@
 package com.github.wdstar.springboot.example;
 
-import lombok.extern.slf4j.Slf4j;
-
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @Slf4j
 public class Hello {
 
+	// Unrecommended: field injectioin.
 	@Autowired
 	@Nullable
 	private BuildProperties buildProperties;
+
+	private final SecretProps secrets;
+
+	// Recommended: constructor injection.
+	@Autowired
+	public Hello(SecretProps secrets) {
+		this.secrets = secrets;
+		if (this.secrets == null) {
+			logger.error("secrets field is null!");
+		}
+	}
 
 	@RequestMapping("/greet")
 	public String greet() {

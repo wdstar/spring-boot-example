@@ -10,7 +10,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 public class HelloTests {
 
 	@Test
-	public void contextLoads() {		
+	public void contextLoads() {
 	}
 
 }
