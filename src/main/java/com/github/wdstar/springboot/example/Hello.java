@@ -17,11 +17,14 @@ public class Hello {
 	@Nullable
 	private BuildProperties buildProperties;
 
+	private final Retry retry;
+
 	private final SecretProps secrets;
 
 	// Recommended: constructor injection.
 	@Autowired
-	public Hello(SecretProps secrets) {
+	public Hello(Retry retry, SecretProps secrets) {
+		this.retry = retry;
 		this.secrets = secrets;
 		if (this.secrets == null) {
 			logger.error("secrets field is null!");
@@ -34,6 +37,18 @@ public class Hello {
 		logger.info("Hello.greet() called.");
 
 		return "Hello World!";
+	}
+
+	@RequestMapping("/retry")
+	public String retry() {
+		try {
+			retry.targetMethod();
+		}
+		catch (Exception e) {
+			return "error: " + e.getMessage();
+		}
+
+		return "success.";
 	}
 
 	@RequestMapping("/version")
