@@ -2,7 +2,6 @@
 package com.github.wdstar.springboot.example.domain;
 
 import java.util.Map;
-import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
@@ -30,7 +29,11 @@ public class RestClient {
 	@Retryable(value = { Throwable.class }, maxAttempts = 5)
 	public Map targetMethodWithCircuitBreaker() {
 		// without a fallback function.
-		return circuitBreakerFactory.create("targetMethod").run(this.targetMethodSuppplier());
+		return circuitBreakerFactory.create("targetMethod")
+				// run()'s 1st arg is `Supplier<T>` functional interface type.
+				// `() -> this.targetMethod()` equals to `this::targetMethod` (method
+				// reference).
+				.run(this::targetMethod);
 	}
 
 	public Map targetMethod() {
@@ -41,10 +44,6 @@ public class RestClient {
 		}
 
 		return res;
-	}
-
-	public Supplier<Map> targetMethodSuppplier() {
-		return this::targetMethod;
 	}
 
 }
