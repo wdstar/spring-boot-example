@@ -1,12 +1,12 @@
 
 package com.github.wdstar.springboot.example.domain;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -26,13 +26,11 @@ public class RestClient {
 		this.rest = rest;
 	}
 
+	// default: maxAttempts = 3
+	@Retryable(value = { Throwable.class }, maxAttempts = 5)
 	public Map targetMethodWithCircuitBreaker() {
-		return circuitBreakerFactory.create("targetMethod").run(this.targetMethodSuppplier(), t -> {
-			logger.warn("restClient::targetMethod() call failed", t);
-			final Map<String, String> fallback = new HashMap<>();
-			fallback.put("hello", "circuit breaker fallback");
-			return fallback;
-		});
+		// without a fallback function.
+		return circuitBreakerFactory.create("targetMethod").run(this.targetMethodSuppplier());
 	}
 
 	public Map targetMethod() {
