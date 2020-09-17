@@ -31,8 +31,7 @@ public class Hello {
 
 	// Recommended: constructor injection.
 	@Autowired
-	public Hello(final RestClient restClient, final Retry retry,
-			final SecretProps secrets) {
+	public Hello(final RestClient restClient, final Retry retry, final SecretProps secrets) {
 		this.restClient = restClient;
 		this.retry = retry;
 		this.secrets = secrets;
@@ -42,8 +41,20 @@ public class Hello {
 	}
 
 	@RequestMapping("/circuitBreaker")
-	public Map circuitBreaker() {
-		return restClient.targetMethodWithCircuitBreaker();
+	public String circuitBreaker() {
+		try {
+			Map res = restClient.targetMethodWithCircuitBreaker();
+			if (res != null) {
+				logger.info(res.toString());
+			}
+		}
+		catch (Exception e) {
+			String msg = "an unexpected exception occurred. " + e.getMessage();
+			logger.error(msg);
+			return msg;
+		}
+
+		return "success.";
 	}
 
 	@RequestMapping("/greet")
