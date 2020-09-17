@@ -1,4 +1,4 @@
-package com.github.wdstar.springboot.example;
+package com.github.wdstar.springboot.example.domain;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -6,12 +6,11 @@ import org.springframework.stereotype.Component;
 import lombok.Getter;
 
 @Component
+@Getter
 public class Secrets {
 
-	@Getter
 	private final String password;
 
-	@Getter
 	private final String token;
 
 	// better constructor injection.

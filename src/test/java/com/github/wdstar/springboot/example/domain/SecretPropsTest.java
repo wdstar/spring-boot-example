@@ -1,4 +1,4 @@
-package com.github.wdstar.springboot.example;
+package com.github.wdstar.springboot.example.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

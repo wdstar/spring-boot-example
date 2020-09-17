@@ -1,4 +1,7 @@
-package com.github.wdstar.springboot.example;
+package com.github.wdstar.springboot.example.controller;
+
+import com.github.wdstar.springboot.example.domain.Retry;
+import com.github.wdstar.springboot.example.domain.SecretProps;
 
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +26,7 @@ public class Hello {
 
 	// Recommended: constructor injection.
 	@Autowired
-	public Hello(Retry retry, SecretProps secrets) {
+	public Hello(final Retry retry, final SecretProps secrets) {
 		this.retry = retry;
 		this.secrets = secrets;
 		if (this.secrets == null) {
@@ -44,7 +47,7 @@ public class Hello {
 		try {
 			retry.targetMethod();
 		}
-		catch (Exception e) {
+		catch (final Exception e) {
 			return "error: " + e.getMessage();
 		}
 

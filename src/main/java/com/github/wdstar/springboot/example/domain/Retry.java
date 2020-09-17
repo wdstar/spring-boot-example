@@ -1,4 +1,4 @@
-package com.github.wdstar.springboot.example;
+package com.github.wdstar.springboot.example.domain;
 
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;

@@ -1,10 +1,11 @@
-package com.github.wdstar.springboot.example;
+package com.github.wdstar.springboot.example.controller;
 
-import lombok.extern.apachecommons.CommonsLog;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import lombok.extern.apachecommons.CommonsLog;
 
 /**
  * HelloMVC
