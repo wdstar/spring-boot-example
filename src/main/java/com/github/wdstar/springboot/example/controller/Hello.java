@@ -1,6 +1,5 @@
 package com.github.wdstar.springboot.example.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import com.github.wdstar.springboot.example.domain.RestClient;
@@ -10,7 +9,6 @@ import com.github.wdstar.springboot.example.domain.SecretProps;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.info.BuildProperties;
-import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,8 +23,6 @@ public class Hello {
 	@Nullable
 	private BuildProperties buildProperties;
 
-	private final CircuitBreakerFactory circuitBreakerFactory;
-
 	private final RestClient restClient;
 
 	private final Retry retry;
@@ -35,9 +31,8 @@ public class Hello {
 
 	// Recommended: constructor injection.
 	@Autowired
-	public Hello(final CircuitBreakerFactory circuitBreakerFactory, final RestClient restClient, final Retry retry,
+	public Hello(final RestClient restClient, final Retry retry,
 			final SecretProps secrets) {
-		this.circuitBreakerFactory = circuitBreakerFactory;
 		this.restClient = restClient;
 		this.retry = retry;
 		this.secrets = secrets;
@@ -48,12 +43,7 @@ public class Hello {
 
 	@RequestMapping("/circuitBreaker")
 	public Map circuitBreaker() {
-		return circuitBreakerFactory.create("targetMethod").run(restClient.targetMethodSuppplier(), t -> {
-			logger.warn("restClient::targetMethod() call failed", t);
-			final Map<String, String> fallback = new HashMap<>();
-			fallback.put("hello", "circuit breaker fallback");
-			return fallback;
-		});
+		return restClient.targetMethodWithCircuitBreaker();
 	}
 
 	@RequestMapping("/greet")
