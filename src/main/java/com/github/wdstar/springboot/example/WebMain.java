@@ -15,6 +15,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.web.client.RestTemplate;
 
+import io.micrometer.core.instrument.binder.hystrix.HystrixMetricsBinder;
+
 @SpringBootApplication
 @EnableCircuitBreaker
 @EnableHystrixDashboard
@@ -30,6 +32,11 @@ public class WebMain {
 		return factory -> factory.configureDefault(id -> HystrixCommand.Setter
 				.withGroupKey(HystrixCommandGroupKey.Factory.asKey(id)).andCommandPropertiesDefaults(
 						HystrixCommandProperties.Setter().withExecutionTimeoutInMilliseconds(3000)));
+	}
+
+	@Bean
+	public HystrixMetricsBinder registerHystrixMetricsBinder() {
+		return new HystrixMetricsBinder();
 	}
 
 	@Bean
