@@ -16,7 +16,9 @@ import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.web.client.RestTemplate;
 
 import io.micrometer.core.instrument.binder.hystrix.HystrixMetricsBinder;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @SpringBootApplication
 @EnableCircuitBreaker
 @EnableHystrixDashboard
@@ -24,6 +26,7 @@ import io.micrometer.core.instrument.binder.hystrix.HystrixMetricsBinder;
 public class WebMain {
 
 	public static void main(String[] args) {
+		logger.debug("SpringApplication running...");
 		SpringApplication.run(WebMain.class, args);
 	}
 

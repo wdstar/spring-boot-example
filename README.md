@@ -31,6 +31,8 @@ See [Spring Initializr Java Support](https://marketplace.visualstudio.com/items?
 1. Run.
     ```bash
     $ java -jar ./build/libs/spring-boot-example-*.jar
+    # with `dev` profile
+    $ java -Dspring.profiles.active=dev -jar ./build/libs/spring-boot-example-*.jar
     ```
 1. Access http://localhost:8080/greet
 

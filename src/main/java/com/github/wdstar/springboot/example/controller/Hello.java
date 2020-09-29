@@ -49,6 +49,7 @@ public class Hello {
 			}
 		}
 		catch (Exception e) {
+			logger.debug("an unexpected exception occurred.", e);
 			String msg = "an unexpected exception occurred. " + e.getMessage();
 			logger.error(msg);
 			return msg;
@@ -83,6 +84,7 @@ public class Hello {
 		String version = "Not Found.";
 		if (buildProperties != null) {
 			version = buildProperties.getVersion();
+			logger.debug(version);
 		}
 
 		return version;
