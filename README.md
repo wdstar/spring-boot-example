@@ -1,6 +1,7 @@
 # Spring Boot example application
 [![CircleCI](https://circleci.com/gh/wdstar/spring-boot-example.svg?style=shield)](https://circleci.com/gh/wdstar/spring-boot-example)
 [![Known Vulnerabilities](https://snyk.io//test/github/wdstar/spring-boot-example/badge.svg?targetFile=build.gradle)](https://snyk.io//test/github/wdstar/spring-boot-example?targetFile=build.gradle)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wdstar_spring-boot-example&metric=alert_status)](https://sonarcloud.io/dashboard?id=wdstar_spring-boot-example)
 
 ## Table of Contents
 
