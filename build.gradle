@@ -73,6 +73,11 @@ springBoot {
     buildInfo()
 }
 
+test {
+    // for JaCoCo with JUnit5
+    useJUnitPlatform()
+}
+
 jacocoTestReport {
     dependsOn test
     reports {
@@ -87,6 +92,5 @@ sonarqube {
         property 'sonar.projectKey', 'wdstar_spring-boot-example'
         property 'sonar.organization', 'wdstar'
         property 'sonar.host.url', 'https://sonarcloud.io'
-        //property 'sonar.jacoco.reportPath', ''
     }
 }
