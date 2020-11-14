@@ -1,4 +1,6 @@
 # Spring Boot example application
+[![CircleCI](https://circleci.com/gh/wdstar/spring-boot-example.svg?style=shield)](https://circleci.com/gh/wdstar/spring-boot-example)
+[![Known Vulnerabilities](https://snyk.io//test/github/wdstar/spring-boot-example/badge.svg?targetFile=build.gradle)](https://snyk.io//test/github/wdstar/spring-boot-example?targetFile=build.gradle)
 
 ## Table of Contents
 
