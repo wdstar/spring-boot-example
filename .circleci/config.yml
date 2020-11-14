@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/openjdk:11-jdk
+    steps:
+      - checkout
+      - run:
+          name: Install tools
+          command: |
+            chmod 755 ./gradlew
+      - run:
+          name: Run unit tests
+          command: |
+            #./gradlew test
+            ./gradlew jacocoTestReport
+      - run:
+          name: Sonar Scanner
+          command: |
+            ./gradlew sonarqube -Dsonar.login=${SONAR_LOGIN}
+
+workflows:
+  version: 2
+  build-workflow:
+    jobs:
+      - test:
+          filters:
+            branches:
+              only: master

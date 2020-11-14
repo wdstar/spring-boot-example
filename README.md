@@ -35,6 +35,16 @@ See [Spring Initializr Java Support](https://marketplace.visualstudio.com/items?
     $ java -Dspring.profiles.active=dev -jar ./build/libs/spring-boot-example-*.jar
     ```
 1. Access http://localhost:8080/greet
+1. Generate JaCoCo reports.
+    ```bash
+    $ ./gradlew jacocoTestReport
+1. Analyze by SonarScanner
+    ```bash
+    # set access token
+    $ cat ~/.gradle/gradle.properties 
+    systemProp.sonar.login=<token>
+    $ ./gradlew sonarqube
+    ```
 
 ## References
 
