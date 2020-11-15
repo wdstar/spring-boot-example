@@ -7,9 +7,15 @@
 
 - [Spring Boot example application](#spring-boot-example-application)
     - [Table of Contents](#table-of-contents)
+    - [Requirements](#requirements)
     - [Development](#development)
         - [Generate a project by Spring Initializr VS Code plugin](#generate-a-project-by-spring-initializr-vs-code-plugin)
         - [Development Cycle](#development-cycle)
+
+
+## Requirements
+
+- Java 11+
 
 ## Development
 
