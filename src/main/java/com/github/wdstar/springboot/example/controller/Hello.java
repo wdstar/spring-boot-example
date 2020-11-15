@@ -10,8 +10,6 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
@@ -42,9 +40,9 @@ public class Hello {
 		}
 	}
 
-	@RequestMapping(path = "/circuitBreaker", method = RequestMethod.GET)
+	@GetMapping("/circuitBreaker")
+	// = @RequestMapping(path = "/circuitBreaker", method = RequestMethod.GET)
 	// = @RequestMapping(value = "/circuitBreaker", method = RequestMethod.GET)
-	// = @GetMapping("/circuitBreaker")
 	public String circuitBreaker() {
 		try {
 			Map res = restClient.targetMethodWithCircuitBreaker();
