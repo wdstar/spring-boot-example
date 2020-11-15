@@ -12,13 +12,13 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class HelloTests {
+class HelloTests {
 
 	@Autowired
 	private Hello controller;
 
 	@Test
-	public void contextLoads() {
+	void contextLoads() {
 		assertThat(controller).isNotNull();
 	}
 

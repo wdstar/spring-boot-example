@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class SecretPropsTest {
+class SecretPropsTest {
 
 	private SecretProps props;
 
@@ -16,7 +16,7 @@ public class SecretPropsTest {
 	}
 
 	@Test
-	public void testAccessors() {
+	void testAccessors() {
 		assertThat(props.getPassword()).isEqualTo("changeMeByEnvVar");
 		assertThat(props.getToken()).isEqualTo("changeMeByEnvVar");
 	}
