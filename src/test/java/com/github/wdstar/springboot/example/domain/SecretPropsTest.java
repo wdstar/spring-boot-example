@@ -17,8 +17,8 @@ class SecretPropsTest {
 
 	@Test
 	void testAccessors() {
-		assertThat(props.getPassword()).isEqualTo("changeMeByEnvVar");
-		assertThat(props.getToken()).isEqualTo("changeMeByEnvVar");
+		assertThat(props.getPassword()).hasToString("changeMeByEnvVar");
+		assertThat(props.getToken()).hasToString("changeMeByEnvVar");
 	}
 
 }

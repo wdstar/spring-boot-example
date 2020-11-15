@@ -76,6 +76,9 @@ springBoot {
 test {
     // for JaCoCo with JUnit5
     useJUnitPlatform()
+    testLogging {
+        events 'passed', 'failed', 'skipped'
+    }
 }
 
 jacocoTestReport {

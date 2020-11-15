@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Hello {
 
-	// Unrecommended: field injectioin.
+	// Unrecommended: field injection.
 	@Autowired
 	@Nullable
 	private BuildProperties buildProperties;

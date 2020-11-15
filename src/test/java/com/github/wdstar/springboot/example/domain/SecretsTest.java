@@ -17,8 +17,8 @@ class SecretsTest {
 
 	@Test
 	void testAccessors() {
-		assertThat(secrets.getPassword()).isEqualTo("password");
-		assertThat(secrets.getToken()).isEqualTo("token");
+		assertThat(secrets.getPassword()).hasToString("password");
+		assertThat(secrets.getToken()).hasToString("token");
 	}
 
 }
