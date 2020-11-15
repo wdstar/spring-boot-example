@@ -44,9 +44,7 @@ public class Hello {
 	public String circuitBreaker() {
 		try {
 			Map res = restClient.targetMethodWithCircuitBreaker();
-			if (res != null) {
-				logger.info(res.toString());
-			}
+			logger.info(res.toString());
 		}
 		catch (Exception e) {
 			logger.debug("an unexpected exception occurred.", e);
